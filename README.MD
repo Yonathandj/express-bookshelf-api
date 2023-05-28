@@ -20,3 +20,5 @@ POST Request membutuhkan title, tags, dan body sebuah buku yang dikirim oleh cli
  - MongoDB / database lain (Akan saya kembangkan terus setelah saya mempelajarinya hehe).
 
  - Devdependencies : Nodemon, EsLint.
+
+- Saya mencoba untuk menerapkan software design pattern : MVC
