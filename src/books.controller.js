@@ -68,7 +68,7 @@ function updateSpecificBook(req, res) {
     };
     res.status(200).json({
       status: 'success',
-      message: 'Book success updated',
+      book: books[indexUpdatedBook],
     });
   } else {
     res.status(404).json({
@@ -85,7 +85,7 @@ function deleteSpecificBook(req, res) {
     books.splice(indexDeletedBook, 1);
     res.status(200).json({
       status: 'success',
-      message: 'book success deleted',
+      book: books[indexDeletedBook],
     });
   } else {
     res.status(404).json({
