@@ -29,4 +29,9 @@ function postBook(req, res) {
   }
 }
 
-module.exports = { postBook };
+function getAllBooks(req, res) {
+  res.status(200).json({
+    books,
+  });
+}
+module.exports = { postBook, getAllBooks };
