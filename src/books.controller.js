@@ -51,4 +51,33 @@ function getSpecificBook(req, res) {
   }
 }
 
-module.exports = { postBook, getAllBooks, getSpecificBook };
+function updateSpecificBook(req, res) {
+  const { id } = req.params;
+  const { title, tags, body } = req.body;
+  const updatedAt = new Date().toISOString();
+
+  const indexUpdatedBook = books.findIndex((book) => book.id === id);
+  books[indexUpdatedBook] = {
+    ...books[indexUpdatedBook],
+    title,
+    tags,
+    body,
+    updatedAt,
+  };
+
+  if (indexUpdatedBook !== -1) {
+    res.status(200).json({
+      status: 'success',
+      book: books[indexUpdatedBook],
+    });
+  } else {
+    res.status(404).json({
+      status: 'failed',
+      message: 'Book you are looking for is not found',
+    });
+  }
+}
+
+module.exports = {
+  postBook, getAllBooks, getSpecificBook, updateSpecificBook,
+};
