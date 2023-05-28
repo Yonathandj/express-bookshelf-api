@@ -16,7 +16,7 @@ function postBook(req, res) {
     updatedAt,
   };
   books.push(newBook);
-  const isAvailable = books.filter((book) => book.id === id);
+  const isAvailable = books.filter((book) => book.id === id).length > 0;
   if (isAvailable) {
     res.status(201).json({
       status: 'success',
