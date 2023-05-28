@@ -57,18 +57,18 @@ function updateSpecificBook(req, res) {
   const updatedAt = new Date().toISOString();
 
   const indexUpdatedBook = books.findIndex((book) => book.id === id);
-  books[indexUpdatedBook] = {
-    ...books[indexUpdatedBook],
-    title,
-    tags,
-    body,
-    updatedAt,
-  };
 
   if (indexUpdatedBook !== -1) {
+    books[indexUpdatedBook] = {
+      ...books[indexUpdatedBook],
+      title,
+      tags,
+      body,
+      updatedAt,
+    };
     res.status(200).json({
       status: 'success',
-      book: books[indexUpdatedBook],
+      message: 'Book success updated',
     });
   } else {
     res.status(404).json({
