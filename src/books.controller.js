@@ -78,6 +78,23 @@ function updateSpecificBook(req, res) {
   }
 }
 
+function deleteSpecificBook(req, res) {
+  const { id } = req.params;
+  const indexDeletedBook = books.findIndex((book) => book.id === id);
+  if (indexDeletedBook !== -1) {
+    books.splice(indexDeletedBook, 1);
+    res.status(200).json({
+      status: 'success',
+      message: 'book success deleted',
+    });
+  } else {
+    res.status(404).json({
+      status: 'failed',
+      message: 'Book you are looking for is not found',
+    });
+  }
+}
+
 module.exports = {
-  postBook, getAllBooks, getSpecificBook, updateSpecificBook,
+  postBook, getAllBooks, getSpecificBook, updateSpecificBook, deleteSpecificBook,
 };
