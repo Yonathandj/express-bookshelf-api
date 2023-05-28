@@ -85,7 +85,7 @@ function deleteSpecificBook(req, res) {
     books.splice(indexDeletedBook, 1);
     res.status(200).json({
       status: 'success',
-      book: books[indexDeletedBook],
+      book: 'book success deleted',
     });
   } else {
     res.status(404).json({
