@@ -16,7 +16,7 @@ function postBook(req, res) {
     updatedAt,
   };
   books.push(newBook);
-  const isAvailable = books.filter(() => books.id === id);
+  const isAvailable = books.filter((book) => book.id === id);
   if (isAvailable) {
     res.status(201).json({
       status: 'success',
@@ -34,4 +34,21 @@ function getAllBooks(req, res) {
     books,
   });
 }
-module.exports = { postBook, getAllBooks };
+
+function getSpecificBook(req, res) {
+  const { id } = req.params;
+  const indexSearchedBook = books.findIndex((book) => book.id === id);
+  if (indexSearchedBook !== -1) {
+    res.status(200).json({
+      status: 'success',
+      book: books[indexSearchedBook],
+    });
+  } else {
+    res.status(404).json({
+      status: 'failed',
+      message: 'Book you are looking for is not found',
+    });
+  }
+}
+
+module.exports = { postBook, getAllBooks, getSpecificBook };
